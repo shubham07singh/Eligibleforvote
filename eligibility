@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.17;
+
+contract EligibleForVote {
+    uint public eligibilityTest;
+
+    function minor(uint _age) public pure returns(string memory) {
+         if(_age>18){
+            revert("Person is already an adult");
+        }
+        return ("Eligility criteria is not fulfilled"); 
+    }
+
+    function eligible(uint _age) public pure returns(string memory) {
+        require(_age >= 18, "You are not eligible for vote");
+        string memory ans = "Choose your condidate";
+        return ans;
+    }
+
+    function test(uint attempts) public {
+        eligibilityTest = attempts;
+        assert(eligibilityTest > 0);
+    }
+}
